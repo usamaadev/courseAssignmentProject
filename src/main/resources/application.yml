@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: "jdbc:postgresql://ec2-18-203-7-163.eu-west-1.compute.amazonaws.com:5432/dbnhvb4igh9ot9?user=mkxvqhsigleosq&password=6fd2d923cf669045c46bbf814ed047c5ee0952e0f0160347d9a014ca705d35d9"
+    username: "mkxvqhsigleosq"
+    password: "6fd2d923cf669045c46bbf814ed047c5ee0952e0f0160347d9a014ca705d35d9"
+    testOnBorrow: true
+    testWhileIdle: true
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: SELECT 1
+    max-active: 15
+    max-idle: 10
+    max-wait: 8000

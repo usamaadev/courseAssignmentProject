@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Create New Product</title>
+
+    <style>
+       #tablestyle {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+    }
+
+    #tablestyle td, #tablestyle th {
+  border: 1px solid #ddd;
+  padding: 8px;
+    }
+
+    #tablestyle tr:nth-child(even){background-color: #f2f2f2;}
+
+    #tablestyle tr:hover {background-color: #ddd;}
+
+    #tablestyle th {
+        padding: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+        border-radius:8px;
+
+        }
+    h1{
+        background-color: #4CAF50;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        color:#ffffff;
+        border-radius:20px;
+    }
+    input{
+
+    border-bottom: 2px solid #4caf50;
+    border-top: none;
+    border-right:none;
+    border-left:none;
+
+      outline: none;
+      background: none;
+      color: black;
+      font-size: 18px;
+      width: 80%;
+      float: left;
+      margin: 0 10px;
+}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  font-family: sans-serif;-->
+}
+
+.button1 {
+  background-color: #4CAF50;
+  color: white;
+  border: 2px solid #4CAF50;
+  border-radius: 8px;
+}
+.button1:hover {
+  background-color: white;
+  color: black;
+}
+</style>
+
+</head>
+<body >
+<div align="center">
+    <h1>Create New Product</h1>
+    <br />
+    <form action="#" th:action="@{/save}" th:object="${product}"
+          method="post">
+        <table id="tablestyle">
+            <tr>
+                <td>Department </td>
+                <td><input type="text" th:field="*{department}" /></td>
+            </tr>
+            <tr>
+                <td>Semester</td>
+                <td><input type="text" th:field="*{semester}" /></td>
+            </tr>
+            <tr>
+                <td>Assignment No.</td>
+                <td><input type="text" th:field="*{assignmentnum}" /></td>
+            </tr>
+            <tr>
+                <td>Teacher Name</td>
+                <td><input type="text" th:field="*{teachername}" /></td>
+            </tr>
+            <tr>
+                <td> Course Name</td>
+                <td><input type="text" th:field="*{coursename}" /></td>
+            </tr>
+            <tr>
+                <td>Course Code</td>
+                <td><input type="text" th:field="*{coursecode}" /></td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td><input type="text" th:field="*{date}" /></td>
+            </tr>
+            <tr>
+                <td>Is Active </td>
+                <td><input type="text" th:field="*{ISACTIVE}" /></td>
+            </tr>
+
+            <tr>
+                <td align="center" colspan="2"><button class ="button button1" type="submit">Save</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
