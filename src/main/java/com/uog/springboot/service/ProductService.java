@@ -30,10 +30,7 @@ public class ProductService {
     public void delete(long id) {
         repo.deleteById(id);
     }
-
-//    public List<Product> getByIsActive(String ISACTIVE){
-//        return repo.findByProductIsActive(ISACTIVE);
-//    }
-
-
+    public List<Product> findActive() {
+        return repo.findActive();
+    }
 }

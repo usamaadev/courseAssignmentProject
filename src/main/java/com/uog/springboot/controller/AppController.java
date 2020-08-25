@@ -3,6 +3,7 @@ package com.uog.springboot.controller;
 import com.uog.springboot.model.Product;
 import com.uog.springboot.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -21,17 +23,25 @@ public class AppController {
     @Autowired
     private ProductService service;
 
+
     @GetMapping("/login")
     public String login(){
         return "login";
     }
 
-    @RequestMapping("/")
+
+    @RequestMapping("/viewAll")
     public String viewHomePage(Model model) {
         List<Product> listProducts = service.listAll();
         model.addAttribute("listProducts", listProducts);
-
         return "index";
+    }
+
+    @GetMapping("/viewById/{id}")
+    public String get(Model model , @PathVariable Integer id) {
+            Product product = service.get(id);
+            model.addAttribute("listProducts", product);
+            return "index";
     }
 
     @RequestMapping("/new")
@@ -47,6 +57,8 @@ public class AppController {
         service.save(product);
         return "redirect:/";
     }
+
+
 
     @RequestMapping("/edit/{id}")
     public ModelAndView showEditProductPage(@PathVariable(name = "id") int id) {
@@ -74,11 +86,27 @@ public class AppController {
         return "redirect:/login?logout";
     }
 
-//    @GetMapping("/active/{value}")
-//    public List<Product> getAllActiveProducts(@PathVariable String ISACTIVE){
-//        return service.getByIsActive(ISACTIVE);
-//    }
-//
-//
+    @RequestMapping("/")
+    public String viewMainPage(Model model){
+
+        return "main_page";
+    }
+
+    @RequestMapping("/EnterId")
+    public String viewById(Model model){
+
+        return "viewById";
+    }
+
+
+    @RequestMapping(value = "/active" ,method = RequestMethod.GET)
+    public String get(Model model) {
+        List<Product> products = new ArrayList<Product>();
+        products = service.findActive();
+        model.addAttribute("listProducts", products);
+        return "index";
+    }
+
+
 
 }

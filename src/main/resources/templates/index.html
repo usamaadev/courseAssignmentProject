@@ -53,6 +53,7 @@
   transition-duration: 0.4s;
   cursor: pointer;
   font-family: sans-serif;
+
 }
 
 .button1 {
@@ -65,57 +66,23 @@
   background-color: white;
   color: black;
 }
+.EditDel{
+  background-color: #008CBA;
+  padding: 8px;
+  color: white;
+  font-family: sans-serif;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  margin: 2px 2px;
 
-
-/* Popup container - can be anything you want */
-.popup {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
-/* The actual popup */
-.popup .popuptext {
-  visibility: hidden;
-  width: 160px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 8px 0;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -80px;
-}
-
-
-
-/* Toggle this class - hide and show the popup */
-.popup .show {
-  visibility: visible;
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s;
-}
-
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity:1 ;}
 }
 
 
 </style>
+
 
 </head>
 <body>
@@ -124,7 +91,7 @@
 </div>
 
 
-    <table id="tablestyle">
+<table id="tablestyle">
     <thead>
     <tr>
         <th>ID</th>
@@ -140,32 +107,33 @@
         <th>Actions</th>
     </tr>
     </thead>
-        <tbody>
-        <tr th:each="product : ${listProducts}">
-            <td th:text="${product.id}">Product ID</td>
-            <td th:text="${product.department}">department</td>
-            <td th:text="${product.semester}">semester</td>
-            <td th:text="${product.assignmentnum}">assignmentnum</td>
-            <td th:text="${product.teachername}">teachername</td>
-            <td th:text="${product.coursename}">coursename</td>
-            <td th:text="${product.coursecode}">coursecode</td>
-            <td th:text="${product.date}">date</td>
-            <td th:text="${product.ISACTIVE}">ISACTIVE</td>
-            <td>
-                <a th:href="@{'/edit/' + ${product.id}}">Edit</a>
-                &nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/delete/' + ${product.id}}">Delete</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <tbody>
+    <tr th:each="product : ${listProducts}">
+        <td th:text="${product.id}">Product ID</td>
+        <td th:text="${product.department}">Department</td>
+        <td th:text="${product.semester}">Demester</td>
+        <td th:text="${product.assignmentnum}">Assignment No.</td>
+        <td th:text="${product.teachername}">Teacher Name</td>
+        <td th:text="${product.coursename}">Course Name</td>
+        <td th:text="${product.coursecode}">Course Code</td>
+        <td th:text="${product.date}">Date</td>
+        <td th:text="${product.ISACTIVE}">Is Active Status</td>
+        <td>
+            <a class="EditDel" th:href="@{'/edit/' + ${product.id}}">Edit</a>
+<!--            &nbsp;-->
+            <a class="EditDel" th:href="@{'/delete/' + ${product.id}}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
 <br/><br/>
 <div align="center">
 
-<a class ="button button1"  href="/new">Add New Assignment</a>
+    <a class ="button button1"  href="/new">Add New Assignment</a>
     <br>
-        <a class ="button button1"  href="/logout">Logout</a>
-    </div>
+    <a class ="button button1"  href="/logout">Logout</a>
+    <a class="button button1" href="/">Go To Main Page</a><br>
+</div>
 </div>
 
 </body>

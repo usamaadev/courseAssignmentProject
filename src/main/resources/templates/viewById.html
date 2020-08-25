@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Assignments</title>
+    <style>
+
+    input{
+
+    border-bottom: 2px solid #4caf50;
+    border-top: none;
+    border-right:none;
+    border-left:none;
+
+      outline: none;
+      background: none;
+      color: black;
+      font-size: 18px;
+      width: 120px;
+<!--      float: right;-->
+      margin: 0 10px;
+}
+
+.button {
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  width: 100px;
+  cursor: pointer;
+  background-color: #008CBA;
+  font-family: sans-serif;
+}
+.button:hover{
+
+  background-color: #4CAF50;
+  color: white;
+}
+
+
+div {
+  border-radius: 8px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  width: 400px;
+  margin: 200px 450px;
+}
+body{ font-family: sans-serif;}
+
+</style>
+
+    <!--    JAVASCRPT FUNCTION-->
+    <script type='text/javascript'>
+        function clickyClick() {
+            url = '/viewById/' + document.getElementById("comment").value
+            window.open(url, '_blank');
+        }
+    </script>
+
+</head>
+<body>
+
+<div align="center">
+    <form>Enter ID:
+        <input type="text" name="comments" id="comment">
+    </form>
+
+    <br>
+
+    <a class="button" onclick="clickyClick()"  >View</a>
+    <br>
+    <a style="width:150px;" class="button" href="/">Back To Main Page</a>
+</div>
+</body>
+</html>
